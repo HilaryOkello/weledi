@@ -33,8 +33,8 @@ class XyzController extends \yii\web\Controller
         $shortcode='601378';
         $consumerkey    ="GqLqQNDloUvQIkXy1nBlXEDtg5ZPbXmd";
         $consumersecret ="hUxG3O6v0eU9Q9OG";
-        $validationurl="https://5dbf04d17a7c.ngrok.io/weledi/xyz/validate?token=KUstudents51234567qwerty";
-        $confirmationurl="https://5dbf04d17a7c.ngrok.io/weledi/xyz/confirm?token=KUstudents51234567qwerty";
+        $validationurl="https://3af4d75081b2.ngrok.io/weledi/xyz/validate?token=KUstudents51234567qwerty";
+        $confirmationurl="https://3af4d75081b2.ngrok.io/weledi/xyz/confirm?token=KUstudents51234567qwerty";
         /* testing environment, comment the below two lines if on production */
         $authenticationurl='https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
         $registerurl = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl';
@@ -148,10 +148,11 @@ class XyzController extends \yii\web\Controller
         $model->ResultCode = $request['Body']['stkCallback']['ResultCode'];
         $model->ResultDesc = $request['Body']['stkCallback']['ResultDesc'];
         if ($request['Body']['stkCallback']['ResultDesc'] == 0){
+        	//vardump($request);exit();
             $model->transAmount = $request['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
             $model->MpesaReceiptNumber = $request['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value'];
-            $model->TransactionDate = ''.$request['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value'].'';
-            $model->PhoneNumber = ''.$request['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value'].'';
+            $model->TransactionDate = ''.$request['Body']['stkCallback']['CallbackMetadata']['Item'][2]['Value'].'';
+            $model->PhoneNumber = ''.$request['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value'].'';
         }
         
         $model->save(); 

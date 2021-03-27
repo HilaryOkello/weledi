@@ -12,8 +12,8 @@ use frontend\models\Wallet;
 use yii\bootstrap4\Alert;
 use yii\bootstrap4\Modal;
 
+$cprofile= Cprofile::find()->where(['user_id'=>Yii::$app->user->id])->one();
 $pprofile= Pprofile::find()->where(['user_id'=>Yii::$app->user->id])->one();
-$pprofile= Cprofile::find()->where(['user_id'=>Yii::$app->user->id])->one();
 $wallet = Wallet::find()->where(['userId' => yii::$app->user->id]) ->one();
 AppAsset::register($this);
 ?>
@@ -99,7 +99,7 @@ AppAsset::register($this);
         </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link nav-text btn btn-green btn-sm roboto font-20" aria-current="page" href="my_projects.html">My projects</a>
+                <a class="nav-link nav-text btn btn-green btn-sm roboto font-20" aria-current="page" href="<?php echo Url::to(['/project/myprojects']) ?>">My projects</a>
             </li>
             <li class="nav-item active dropdown mx-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-bell fa-2x"></i></a>
@@ -128,7 +128,11 @@ AppAsset::register($this);
                 <button class="nav-link nav-text roboto font-20 btn btn-green btn-sm text-white deposit" baseUrl="<?= Yii::$app->request->baseUrl?>" type="button">Buy credits</button>
             </li>
             <li class="nav-item active mx-2">
-                <a class="nav-link nav-text roboto font-20 btn btn-blue btn-sm text-white" aria-current="page" href="#"><?php echo $wallet->balance ?> credits</a>
+                <a class="nav-link nav-text roboto font-20 btn btn-blue btn-sm text-white" aria-current="page" href="#"><?php if(!empty($wallet)){
+                	echo $wallet->balance;}
+                	else{
+                		echo "0";}
+                ?> credits</a>
             </li>
            
         </ul>

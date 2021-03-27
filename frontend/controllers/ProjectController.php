@@ -69,6 +69,11 @@ class ProjectController extends Controller
     	
     	return $this->render('myleads');
     }
+    public function actionMyprojects()
+    {
+    	
+    	return $this->render('myprojects');
+    }
 
     /**
      * Displays a single Project model.
@@ -85,14 +90,16 @@ class ProjectController extends Controller
     
     public function actionSeecontacts($connect_id, $id){
     	$model = $this->findModel($id);
-    	$credit = Wallet::find()->where(['user_id'=> Yii::$app->user->id])->one();
-    	if ($credit>=1){
+    	$credit = Wallet::find()->where(['userId'=> Yii::$app->user->id])->one();
+    	if ($credit->balance >=1){
     	$command = \Yii::$app->db->createCommand('UPDATE connect SET status=1 WHERE connect_id='.$connect_id);
     	$command->execute();
     	return $this->redirect(['view','id' => $model->project_id,
     			
     	]);}
-    	return false;
+    	return $this->redirect(['view','id' => $model->project_id,
+    			
+    	]);
     }
 
     /**

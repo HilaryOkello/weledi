@@ -25,8 +25,8 @@ $wallet = Wallet::find()->where(['userId' => yii::$app->user->id]) ->one();
     <?= $form->field($model, 'phoneCode')->dropDownList(ArrayHelper::map(Countries::find()->all(), 'couPhoneCode','countryName'))?>
     
     <?= $form->field($model, 'mpesaNumber')->textInput() ?>
-
-    <?= $form->field($model, 'details')->textarea(['rows' => 1]) ?>
+    
+    <?= $form->field($model, 'details')->hiddenInput(['value'=> 'buy credits'])->label(false)?>
 
     <?= $form->field($model, 'createdBy')->hiddenInput(['value'=> yii::$app->user->id])->label(false) ?>
 

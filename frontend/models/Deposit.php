@@ -35,7 +35,7 @@ class Deposit extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['walletId', 'transAmount', 'phoneCode', 'mpesaNumber', 'details', 'createdBy'], 'required'],
+            [['walletId', 'transAmount', 'phoneCode', 'details','mpesaNumber', 'createdBy'], 'required'],
             [['walletId', 'transAmount', 'phoneCode', 'mpesaNumber', 'createdBy', 'status'], 'integer'],
             [['details'], 'string'],
             [['transDate'], 'safe'],

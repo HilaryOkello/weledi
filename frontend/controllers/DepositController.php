@@ -87,7 +87,7 @@ class DepositController extends Controller
     	$PartyA = $postData['phoneCode'].$postData['mpesaNumber'];
     	$PartyB = 174379;
     	//   $UserId = $postData['userId'];
-    	$CallBackURL = "https://5dbf04d17a7c.ngrok.io/weledi/xyz/confirm?token=KUstudents51234567qwerty";
+    	$CallBackURL = "https://3af4d75081b2.ngrok.io/weledi/xyz/confirm?token=KUstudents51234567qwerty";
     	$AccountReference =  $postData['details'];
     	$TransactionDesc = $postData['details'];
     	

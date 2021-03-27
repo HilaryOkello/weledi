@@ -72,12 +72,12 @@ $this->params['breadcrumbs'][] = $this->title;
              </div>
              <div>
              	<div>
-                    <h6 class="roboto font-20 text-blue ml-3 mt-3">Customer</h6>
+                    <h6 class="roboto font-20 text-blue ml-3 mt-1">Customer:</h6>
                     <P class="roboto font-20 text-black ml-3"><?= $cus_contacts->username?>  
                     </P>
                 </div>
                 <div>
-                    <h6 class="roboto font-20 text-blue ml-3 mt-3">Project Description</h6>
+                    <h6 class="roboto font-20 text-blue ml-3 mt-1">Project Description:</h6>
                     <P class="roboto font-20 text-black ml-3"><?= $model->brief?>  
                     </P>
                 </div>
@@ -94,14 +94,16 @@ $this->params['breadcrumbs'][] = $this->title;
              <div class="col-lg-5 my-2">
                <?php if (Yii::$app->user->can('customer')):?>
                <div>
-                    <?= Html::a('Update', ['update', 'id' => $model->project_id], ['class' => 'btn btn-blue text-white']) ?>
-			        <?= Html::a('Delete', ['delete', 'id' => $model->project_id], [
+                    <!--<?= Html::a('Update', ['#'], ['class' => 'btn btn-blue text-white']) ?>
+			        <?= Html::a('Delete', ['#'], [
 			            'class' => 'btn btn-pink text-white',
 			            'data' => [
 			                'confirm' => 'Are you sure you want to delete this item?',
 			                'method' => 'post',
 			            ],
-			        ]) ?>
+			        ]) ?>-->
+			        <a class="text-white my-1 w-75 btn btn-sm btn-blue roboto font-15" href="#">Update</a></br>
+			        <a class="text-white my-1 w-75 btn btn-sm btn-pink roboto font-15" href="#">Delete</a></br>
 			   </div>
 			   <?php elseif (Yii::$app->user->can('professional')):?>
 			   <div>
@@ -160,13 +162,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h6 class="ml-3 roboto text-black font-20">Juja, Kiambu </h6>
             </div>
             <div class="col-lg-4 my-2" style="float:left">
-                <a class="ml-5 center-thing roboto text-blue font-20" href="connect_details.html"><i class="fas fa-angle-double-right  fa-lg"></i></a>
+                <a class="ml-5 center-thing roboto text-blue font-20" href="#"><i class="fas fa-angle-double-right  fa-lg"></i></a>
             </div> 
         </div>
         <?php }?>
         </div>
 
-        <div class="my-1">
+        <!--  <div class="my-1">
             <h6 class="roboto font-20 text-pink ml-3 mt-3">Quotes on this project</h6>
         </div>
         <div class="row border my-2 box-shadow">
@@ -178,7 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-4 my-2" style="float:left">
                 <a class="ml-5 center-thing roboto text-blue font-20" href="connect_details.html"><i class="fas fa-angle-double-right  fa-lg"></i></a>
-            </div>
+            </div>-->
        	<?php elseif (Yii::$app->user->can('professional')):?>
         </div>
                 <div class="container-fluid col-lg-6 my-3">

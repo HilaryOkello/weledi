@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use frontend\models\Document;
+use frontend\models\Wallet;
 
 /**
  * PprofileController implements the CRUD actions for Pprofile model.
@@ -99,7 +100,9 @@ class PprofileController extends Controller
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
     		//var_dump($_FILES); exit();
     		if($this->saveDocument($model->pprofile_id,Yii::$app->request->post()['Document'])){
+    			if($this->createWallet()){
     			return $this->redirect(['view', 'id' => $model->pprofile_id]);
+    			}
     		}
     	}
     	
@@ -135,7 +138,16 @@ class PprofileController extends Controller
     	}
     	return false;
     }
-
+    
+    public function createwallet(){
+    	$model= new Wallet();
+    	$model->userId = Yii::$app->user->id;
+    	$model->currencyId = 76;
+    	if($model->save()){
+    		return true;
+    	}
+    	return false;
+    }
 
     /**
      * Updates an existing Pprofile model.
