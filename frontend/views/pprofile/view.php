@@ -11,7 +11,7 @@ use yii\widgets\DetailView;
 $this->title = $model->first_name;
 $this->params['breadcrumbs'][] = ['label' => 'Pprofiles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$pusername = Pprofile::find()->joinWith('user')->one();
+$pusername = Pprofile::find()->where(['user_id'=> $model->user_id])->joinWith('user')->one();
 
 \yii\web\YiiAsset::register($this);
 ?>
@@ -71,17 +71,17 @@ $pusername = Pprofile::find()->joinWith('user')->one();
                 </div>
             	<div class="col-lg-3">
             		<?php if(Yii::$app->user->can('customer')): ?>
-                	<a class="text-black btn btn-sm btn-green btn-sm roboto font-15 my-3 w-100" aria-current="page" href="<?php echo Url::to(['/project/connect'])?>">Connect with Pro</a>
-                	<a class="text-black btn btn-sm btn-blue btn-sm roboto font-15 my-3 w-100" aria-current="page" href="<?php echo Url::to(['/project/get-quote'])?>">Get a quote</a>
+                	<a class="text-black btn btn-sm btn-green btn-sm roboto font-15 my-3 w-100" aria-current="page" href="<?php echo Url::to(['/project/create', 'user_id'=>$model->user->id, 'username'=>$pusername->user->username])?>">Connect with Pro</a>
+                	<a class="text-black btn btn-sm btn-blue btn-sm roboto font-15 my-3 w-100" aria-current="page" href="#">Get a quote</a>
                 	<?php else: ?>
-       					 <?= Html::a('Update', ['update', 'id' => $model->pprofile_id], ['class' => 'btn btn-blue']) ?>
+       					 <!-- <?= Html::a('Update', ['update', 'id' => $model->pprofile_id], ['class' => 'btn btn-blue']) ?>
        					 <?= Html::a('Delete', ['delete', 'id' => $model->pprofile_id], [
             							'class' => 'btn btn-pink',
             							'data' => [
               								  'confirm' => 'Are you sure you want to delete this item?',
               								  'method' => 'post',
             								],
-       								]) ?>
+       								]) ?>-->
        				<?php endif; ?>				
             </div> 
          	</div>

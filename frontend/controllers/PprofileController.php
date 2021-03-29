@@ -41,7 +41,7 @@ class PprofileController extends Controller
         						[
         								'actions' => ['view'],
         								'allow' => true,
-        								'roles' => ['?'],
+        								'roles' => ['?', '@'],
         						],
         				],
         		],
